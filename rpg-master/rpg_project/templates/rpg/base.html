@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>RPG - {% block title %}Work in progress!{% endblock %}</title>
+		<link rel = "stylesheet" type="text/css" href="userBars.css" media="screen"/>
+		<link rel = "stylesheet" type="text/css" href="circleProf.css" media="screen"/>
+    </head>
+
+    <body>
+        <div>
+            {% block body_block %}{% endblock %}
+        </div>
+
+        <hr />
+
+        <div>
+        <ul>
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+	<li><a href="{% url 'game' %}">Play</a></li>
+	<li><a href="{% url 'create_monster' %}">Create Monster</a></li>
+        <li><a href="{% url 'create_area' %}">Create Area</a></li>
+    {% else %}
+        <li><a href="{% url 'register' %}">Register Here</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+    <li><a href="{% url 'index' %}">Home</a></li>
+	
+	<div class="profileImage"></div>
+	
+	<div class="stat-levels">
+  <div class="stat-1 stat-bar">
+    <span class="stat-bar-rating" role="stat-bar" style="width: {{HP}};">80%</span>
+	{{char.currentHP}} / {{char.maxHP}}
+  </div>
+  <div class="stat-2 stat-bar">
+    <span class="stat-bar-rating" role="stat-bar" style="width: {{XP}};">45%</span>
+	{{char.experience}}/100
+  </div>
+  <div class="stat-3 stat-bar">
+    <span class="stat-bar-rating" role="stat-bar" style="width: {{Mana}};">20%</span>
+	{{char.currentMana}}/{{char.maxMana}}
+  </div>
+</div>
+
+
+
+    
+
+	
+</div>
+    </body>
+</html>
+
+
+
+
+
+
+
